@@ -1,23 +1,29 @@
-// server.js
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const connectDB  =require('./DataBases/DbConnection');
-// Middleware (optional)
+
+const connectDB = require('./DataBases/DbConnection');
+
+// ✅ Enable CORS for all origins (to make API public and accept requests from frontend)
+app.use(cors());
+
+// If needed, restrict to specific origin like this:
+// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+
+// ✅ Middleware to parse JSON bodies
 app.use(express.json());
 
+// ✅ Import and use auth routes
 const AuthRouter = require('./router/auth-router');
+app.use("/api/auth", AuthRouter);
 
-app.use("/api/auth",AuthRouter);
-
+// ✅ Basic test route
 app.get('/', (req, res) => {
     res.send('Server is running!');
 });
 
-
-
-
-// Database connection and server start
+// ✅ Connect to DB and start server
 connectDB()
     .then(() => {
         app.listen(PORT, () => {
@@ -26,5 +32,5 @@ connectDB()
     })
     .catch((error) => {
         console.error('Failed to connect to database:', error.message);
-        process.exit(1); // Exit the process with failure code
+        process.exit(1);
     });

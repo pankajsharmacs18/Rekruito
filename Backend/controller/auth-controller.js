@@ -4,11 +4,12 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const { sendEmail } = require('../utils/email');
 const crypto = require('crypto');
-
+JWT_SECRET="9f8b9c9c8f993ef30a2093f74eaa5b3a6f8c0f7e4dcb8b5c3b3e5d4e91fc2f9e"
+JWT_EXPIRES_IN="7d"
 // Helper function to generate JWT token
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN
+    return jwt.sign({ id }, JWT_SECRET, {
+        expiresIn: JWT_EXPIRES_IN
     });
 };
 
@@ -33,6 +34,7 @@ const createSendToken = (user, statusCode, res) => {
 // @access  Public
 register = async (req, res, next) => {
     try {
+        console.log("I am called")
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
