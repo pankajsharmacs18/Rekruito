@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Icon from 'components/AppIcon';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../context/AuthContext';
 
-const RegisterForm = ({ onSuccess, isLoading }) => {
+const RegisterForm = ({isLoading }) => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -14,6 +16,8 @@ const RegisterForm = ({ onSuccess, isLoading }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
+  const navigate=useNavigate();
+  const {login}=useAuth();
 
   const calculatePasswordStrength = (password) => {
     let strength = 0;
@@ -95,12 +99,16 @@ const RegisterForm = ({ onSuccess, isLoading }) => {
         })
       });
 
+      
+
       const result = await response.json();
-console.log("Result",result)
+      console.log("Result",result)
+      const {token,user}=result;
       if (response.ok) {
         alert('Registration successful ');
         console.log('User created:', result);
-        // Optionally: onSuccess callback or redirect
+        login(token, result.data.user, true);
+        navigate('/')
       } else {
         alert(result.message || 'Registration failed ');
         console.error('Registration error:', result);
