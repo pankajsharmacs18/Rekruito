@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from 'components/AppIcon';
+import { useAuth } from '../../../../context/AuthContext';
 
-const LoginForm = ({ onSuccess, isLoading }) => {
+
+
+const LoginForm = ({isLoading }) => {
+  const { login } = useAuth();
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -12,10 +17,10 @@ const LoginForm = ({ onSuccess, isLoading }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Mock credentials for testing
-  const mockCredentials = {
-    email: 'john.doe@example.com',
-    password: 'JobSeeker123!'
-  };
+  // const mockCredentials = {
+  //   email: 'john.doe@example.com',
+  //   password: 'JobSeeker123!'
+  // };
 
   const validateForm = () => {
     const newErrors = {};
@@ -37,41 +42,38 @@ const LoginForm = ({ onSuccess, isLoading }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
-        })
-      });
-
-      const data = await response.json();
-console.log("result datta ",data);
-      if (!response.ok) {
-        // Handle API-level errors (e.g., 401 Unauthorized)
-        setErrors({ general: data.message || "Login failed" });
-        return;
-      }
-
-      // Success: pass response to onSuccess callback
-      onSuccess({
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         email: formData.email,
-        token: data.token, // or any other data your API returns
-        rememberMe: formData.rememberMe
-      });
-    } catch (error) {
-      console.error("Login request failed:", error);
-      setErrors({ general: "Something went wrong. Please try again later." });
+        password: formData.password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setErrors({ general: data.message || "Login failed" });
+      return;
     }
-  };
+
+    
+    login(data.token, data.data.user, formData.rememberMe);
+    navigate('/')
+
+  } catch (error) {
+    setErrors({ general: "Something went wrong. Please try again later." });
+  }
+};
+
 
 
   const handleChange = (e) => {
@@ -212,7 +214,7 @@ console.log("result datta ",data);
       </button>
 
       {/* Mock Credentials Helper */}
-      <div className="bg-primary-50 border border-primary-100 rounded-md p-3 mt-4">
+      {/* <div className="bg-primary-50 border border-primary-100 rounded-md p-3 mt-4">
         <div className="flex items-start">
           <Icon name="Info" size={16} color="var(--color-primary)" className="mt-0.5 mr-2 flex-shrink-0" />
           <div className="text-sm">
@@ -221,7 +223,7 @@ console.log("result datta ",data);
             <p className="text-primary-600">Password: {mockCredentials.password}</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </form>
   );
 };
