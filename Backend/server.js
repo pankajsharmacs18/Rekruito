@@ -1,36 +1,34 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
+
+const connectDB = require('./DataBases/DbConnection');
+const authRoutes = require('./router/auth-router');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const connectDB = require('./DataBases/DbConnection');
-
-// ✅ Enable CORS for all origins (to make API public and accept requests from frontend)
+// Global middlewares
 app.use(cors());
-
-// If needed, restrict to specific origin like this:
-// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-
-// ✅ Middleware to parse JSON bodies
 app.use(express.json());
 
-// ✅ Import and use auth routes
-const AuthRouter = require('./router/auth-router');
-app.use("/api/auth", AuthRouter);
+// Routes
+app.use('/api/auth', authRoutes);
 
-// ✅ Basic test route
+// Health check
 app.get('/', (req, res) => {
     res.send('Server is running!');
 });
 
-// ✅ Connect to DB and start server
+// Start server after DB connection
 connectDB()
     .then(() => {
         app.listen(PORT, () => {
-            console.log(`Server started on http://localhost:${PORT}`);
+            console.log(`Server running on http://localhost:${PORT}`);
         });
     })
-    .catch((error) => {
-        console.error('Failed to connect to database:', error.message);
+    .catch((err) => {
+        console.error('Database connection failed:', err.message);
         process.exit(1);
     });
