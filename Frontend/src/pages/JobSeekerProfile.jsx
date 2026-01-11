@@ -3,9 +3,12 @@ import {
     User, Mail, Phone, MapPin, Briefcase, GraduationCap,
     Award, FileText, Globe, Settings, Plus, Trash2,
     Edit2, Save, X, Upload, Linkedin, Github, Twitter,
-    Calendar, DollarSign, Target, Star, CheckCircle
+    Calendar, DollarSign, Target, Star, CheckCircle,
+    GlobeIcon, Languages, BookOpen, Users, Code,
+    Heart, Trophy, Building, Home, Download,
+    Eye, EyeOff, Bell, Share2, Database
 } from 'lucide-react';
-import  '../styles/jobseeker.css';
+
 const JobSeekerProfile = () => {
     const [activeTab, setActiveTab] = useState('personal');
     const [isEditing, setIsEditing] = useState(false);
@@ -34,9 +37,9 @@ const JobSeekerProfile = () => {
             },
             communicationMethod: ["Email", "Portal Messaging"],
             languages: [
-                { language: "English", proficiency: "Native", reading: 5, writing: 5, speaking: 5 },
-                { language: "French", proficiency: "Intermediate", reading: 4, writing: 3, speaking: 4 },
-                { language: "Spanish", proficiency: "Basic", reading: 2, writing: 1, speaking: 2 }
+                { id: 1, language: "English", proficiency: "Native", reading: 5, writing: 5, speaking: 5 },
+                { id: 2, language: "French", proficiency: "Intermediate", reading: 4, writing: 3, speaking: 4 },
+                { id: 3, language: "Spanish", proficiency: "Basic", reading: 2, writing: 1, speaking: 2 }
             ]
         },
 
@@ -65,6 +68,7 @@ const JobSeekerProfile = () => {
                 ],
                 projects: [
                     {
+                        id: 1,
                         name: "E-commerce Platform Migration",
                         duration: "8 months",
                         teamSize: 8,
@@ -151,18 +155,31 @@ const JobSeekerProfile = () => {
 
         skills: {
             technical: [
-                { name: "React", category: "Frameworks", proficiency: 5, years: 4, lastUsed: "2023-12" },
-                { name: "Node.js", category: "Backend", proficiency: 4, years: 5, lastUsed: "2023-12" },
-                { name: "Python", category: "Languages", proficiency: 4, years: 6, lastUsed: "2023-11" },
-                { name: "AWS", category: "Cloud", proficiency: 4, years: 3, lastUsed: "2023-12" },
-                { name: "MongoDB", category: "Databases", proficiency: 4, years: 4, lastUsed: "2023-12" }
+                { id: 1, name: "React", category: "Frameworks", proficiency: 5, years: 4, lastUsed: "2023-12" },
+                { id: 2, name: "Node.js", category: "Backend", proficiency: 4, years: 5, lastUsed: "2023-12" },
+                { id: 3, name: "Python", category: "Languages", proficiency: 4, years: 6, lastUsed: "2023-11" },
+                { id: 4, name: "AWS", category: "Cloud", proficiency: 4, years: 3, lastUsed: "2023-12" },
+                { id: 5, name: "MongoDB", category: "Databases", proficiency: 4, years: 4, lastUsed: "2023-12" }
             ],
-            softSkills: ["Leadership", "Communication", "Problem Solving", "Team Collaboration"],
-            methodologies: ["Agile", "Scrum", "DevOps"]
+            softSkills: [
+                { id: 1, name: "Leadership" },
+                { id: 2, name: "Communication" },
+                { id: 3, name: "Problem Solving" },
+                { id: 4, name: "Team Collaboration" }
+            ],
+            methodologies: [
+                { id: 1, name: "Agile" },
+                { id: 2, name: "Scrum" },
+                { id: 3, name: "DevOps" }
+            ]
         },
 
         jobPreferences: {
-            desiredTitles: ["Senior Software Engineer", "Tech Lead", "Solutions Architect"],
+            desiredTitles: [
+                { id: 1, title: "Senior Software Engineer" },
+                { id: 2, title: "Tech Lead" },
+                { id: 3, title: "Solutions Architect" }
+            ],
             targetIndustry: "Technology",
             careerLevel: "Manager",
             shortTermGoal: "Lead a team of 10+ engineers",
@@ -175,7 +192,12 @@ const JobSeekerProfile = () => {
             expectedRange: { low: 130000, high: 160000 },
             noticePeriod: "30 days",
             earliestStart: "2024-02-01",
-            employmentStatus: "Employed (Actively looking)"
+            employmentStatus: "Employed (Actively looking)",
+            benefits: [
+                { id: 1, name: "Health Insurance", priority: 1 },
+                { id: 2, name: "Retirement Plans", priority: 2 },
+                { id: 3, name: "Professional Development", priority: 3 }
+            ]
         },
 
         portfolio: {
@@ -185,6 +207,7 @@ const JobSeekerProfile = () => {
             behance: null,
             projects: [
                 {
+                    id: 1,
                     name: "E-commerce Dashboard",
                     type: "Case Study",
                     url: "https://github.com/alexchen/ecommerce-dashboard",
@@ -214,9 +237,9 @@ const JobSeekerProfile = () => {
         ],
 
         socialMedia: [
-            { platform: "LinkedIn", url: "https://linkedin.com/in/alexchen", icon: <Linkedin size={16} /> },
-            { platform: "GitHub", url: "https://github.com/alexchen", icon: <Github size={16} /> },
-            { platform: "Twitter", url: "https://twitter.com/alex_chen", icon: <Twitter size={16} /> }
+            { id: 1, platform: "LinkedIn", url: "https://linkedin.com/in/alexchen", icon: <Linkedin size={16} /> },
+            { id: 2, platform: "GitHub", url: "https://github.com/alexchen", icon: <Github size={16} /> },
+            { id: 3, platform: "Twitter", url: "https://twitter.com/alex_chen", icon: <Twitter size={16} /> }
         ],
 
         resume: {
@@ -237,7 +260,36 @@ const JobSeekerProfile = () => {
                 analytics: true,
                 research: false
             }
-        }
+        },
+
+        volunteerExperience: [
+            {
+                id: 1,
+                organization: "Code for Canada",
+                role: "Technical Mentor",
+                cause: "Education",
+                startDate: "2019-01-01",
+                endDate: "Present",
+                contributions: ["Mentored aspiring developers", "Conducted coding workshops"]
+            }
+        ],
+
+        memberships: [
+            {
+                id: 1,
+                organization: "IEEE Computer Society",
+                memberId: "IEEE12345",
+                level: "Professional",
+                startDate: "2018-01-01",
+                endDate: "Present"
+            }
+        ],
+
+        hobbies: [
+            { id: 1, name: "Photography", type: "Personal" },
+            { id: 2, name: "Hiking", type: "Personal" },
+            { id: 3, name: "Open Source Contribution", type: "Professional" }
+        ]
     });
 
     const tabs = [
@@ -246,13 +298,211 @@ const JobSeekerProfile = () => {
         { id: 'education', label: 'Education', icon: <GraduationCap size={18} /> },
         { id: 'skills', label: 'Skills', icon: <Star size={18} /> },
         { id: 'certifications', label: 'Certifications', icon: <Award size={18} /> },
-        { id: 'achievements', label: 'Achievements', icon: <CheckCircle size={18} /> },
+        { id: 'achievements', label: 'Achievements', icon: <Trophy size={18} /> },
         { id: 'preferences', label: 'Job Preferences', icon: <Target size={18} /> },
-        { id: 'portfolio', label: 'Portfolio', icon: <Globe size={18} /> },
-        { id: 'social', label: 'Social Media', icon: <Twitter size={18} /> },
+        { id: 'portfolio', label: 'Portfolio', icon: <GlobeIcon size={18} /> },
+        { id: 'social', label: 'Social Media', icon: <Share2 size={18} /> },
         { id: 'resume', label: 'Resume', icon: <FileText size={18} /> },
+        { id: 'volunteer', label: 'Volunteer', icon: <Heart size={18} /> },
+        { id: 'memberships', label: 'Memberships', icon: <Users size={18} /> },
+        { id: 'hobbies', label: 'Hobbies', icon: <BookOpen size={18} /> },
         { id: 'settings', label: 'Settings', icon: <Settings size={18} /> }
     ];
+
+    // Generic add functions for each section
+    const addItem = (section, newItem) => {
+        setUserData(prev => {
+            if (Array.isArray(prev[section])) {
+                return { ...prev, [section]: [...prev[section], { ...newItem, id: Date.now() }] };
+            } else if (section.includes('.')) {
+                // Handle nested structures like skills.technical
+                const [parent, child] = section.split('.');
+                return {
+                    ...prev,
+                    [parent]: {
+                        ...prev[parent],
+                        [child]: [...prev[parent][child], { ...newItem, id: Date.now() }]
+                    }
+                };
+            }
+            return prev;
+        });
+    };
+
+    const deleteItem = (section, id) => {
+        setUserData(prev => {
+            if (Array.isArray(prev[section])) {
+                return { ...prev, [section]: prev[section].filter(item => item.id !== id) };
+            } else if (section.includes('.')) {
+                const [parent, child] = section.split('.');
+                return {
+                    ...prev,
+                    [parent]: {
+                        ...prev[parent],
+                        [child]: prev[parent][child].filter(item => item.id !== id)
+                    }
+                };
+            }
+            return prev;
+        });
+    };
+
+    // Specific add functions
+    const addExperience = () => {
+        const newExp = {
+            id: Date.now(),
+            jobTitle: "New Position",
+            company: "",
+            industry: "",
+            employmentType: "Full-time Permanent",
+            startDate: new Date().toISOString().split('T')[0],
+            endDate: "",
+            location: "",
+            department: "",
+            reportingTo: "",
+            salary: { base: 0, bonus: 0, currency: "CAD" },
+            responsibilities: [],
+            projects: [],
+            reasonForLeaving: ""
+        };
+        addItem('experience', newExp);
+    };
+
+    const addEducation = () => {
+        const newEdu = {
+            id: Date.now(),
+            degree: "",
+            field: "",
+            institution: "",
+            location: "",
+            startDate: "",
+            endDate: "",
+            grade: "",
+            honors: "",
+            thesis: "",
+            coursework: []
+        };
+        addItem('education', newEdu);
+    };
+
+    const addCertification = () => {
+        const newCert = {
+            id: Date.now(),
+            name: "",
+            authority: "",
+            certificateId: "",
+            issueDate: new Date().toISOString().split('T')[0],
+            expiryDate: "",
+            credentialUrl: "",
+            verified: false
+        };
+        addItem('certifications', newCert);
+    };
+
+    const addSkill = (type) => {
+        const newSkill = {
+            id: Date.now(),
+            name: "",
+            ...(type === 'technical' ? { category: "", proficiency: 3, years: 1, lastUsed: "" } : {})
+        };
+        addItem(`skills.${type}`, newSkill);
+    };
+
+    const addAchievement = () => {
+        const newAchievement = {
+            id: Date.now(),
+            type: "Award",
+            name: "",
+            organization: "",
+            year: new Date().getFullYear().toString(),
+            description: ""
+        };
+        addItem('achievements', newAchievement);
+    };
+
+    const addSocialMedia = () => {
+        const newSocial = {
+            id: Date.now(),
+            platform: "",
+            url: "",
+            icon: <GlobeIcon size={16} />
+        };
+        addItem('socialMedia', newSocial);
+    };
+
+    const addLanguage = () => {
+        const newLanguage = {
+            id: Date.now(),
+            language: "",
+            proficiency: "Intermediate",
+            reading: 3,
+            writing: 3,
+            speaking: 3
+        };
+        addItem('personalInfo.languages', newLanguage);
+    };
+
+    const addProject = () => {
+        const newProject = {
+            id: Date.now(),
+            name: "",
+            type: "Case Study",
+            url: "",
+            description: ""
+        };
+        addItem('portfolio.projects', newProject);
+    };
+
+    const addVolunteerExperience = () => {
+        const newVolunteer = {
+            id: Date.now(),
+            organization: "",
+            role: "",
+            cause: "Education",
+            startDate: "",
+            endDate: "",
+            contributions: []
+        };
+        addItem('volunteerExperience', newVolunteer);
+    };
+
+    const addMembership = () => {
+        const newMembership = {
+            id: Date.now(),
+            organization: "",
+            memberId: "",
+            level: "Professional",
+            startDate: "",
+            endDate: ""
+        };
+        addItem('memberships', newMembership);
+    };
+
+    const addHobby = () => {
+        const newHobby = {
+            id: Date.now(),
+            name: "",
+            type: "Personal"
+        };
+        addItem('hobbies', newHobby);
+    };
+
+    const addDesiredTitle = () => {
+        const newTitle = {
+            id: Date.now(),
+            title: ""
+        };
+        addItem('jobPreferences.desiredTitles', newTitle);
+    };
+
+    const addBenefit = () => {
+        const newBenefit = {
+            id: Date.now(),
+            name: "",
+            priority: userData.jobPreferences.benefits.length + 1
+        };
+        addItem('jobPreferences.benefits', newBenefit);
+    };
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -265,266 +515,349 @@ const JobSeekerProfile = () => {
         }
     };
 
-    const addExperience = () => {
-        const newExp = {
-            id: userData.experience.length + 1,
-            jobTitle: "",
-            company: "",
-            industry: "",
-            employmentType: "Full-time Permanent",
-            startDate: "",
-            endDate: "",
-            location: "",
-            responsibilities: []
-        };
-        setUserData({
-            ...userData,
-            experience: [...userData.experience, newExp]
-        });
-    };
-
-    const deleteExperience = (id) => {
-        setUserData({
-            ...userData,
-            experience: userData.experience.filter(exp => exp.id !== id)
-        });
-    };
-
-    const addSocialMedia = () => {
-        const newSocial = {
-            platform: "",
-            url: ""
-        };
-        setUserData({
-            ...userData,
-            socialMedia: [...userData.socialMedia, newSocial]
-        });
-    };
-
-    const deleteSocialMedia = (index) => {
-        const updated = [...userData.socialMedia];
-        updated.splice(index, 1);
-        setUserData({ ...userData, socialMedia: updated });
-    };
-
     const saveChanges = () => {
         setIsEditing(false);
-        // In real app, you would send data to backend here
         alert('Profile updated successfully!');
     };
+
+    const AddButton = ({ onClick, label, icon = <Plus size={16} />, className = "" }) => (
+        <button
+            onClick={onClick}
+            className={`flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition ${className}`}
+        >
+            {icon}
+            {label}
+        </button>
+    );
+
+    const SectionHeader = ({ title, description, onAdd, showAdd = true }) => (
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <div>
+                <h3 className="text-xl font-bold text-gray-900">{title}</h3>
+                {description && <p className="text-gray-600 mt-1">{description}</p>}
+            </div>
+            {isEditing && showAdd && onAdd && (
+                <AddButton onClick={onAdd} label={`Add ${title}`} />
+            )}
+        </div>
+    );
 
     const renderTabContent = () => {
         switch(activeTab) {
             case 'personal':
                 return (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Basic Information"
+                            description="Your personal and contact details"
+                        />
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input
-                                    type="text"
-                                    value={userData.personalInfo.fullName}
-                                    onChange={(e) => setUserData({
-                                        ...userData,
-                                        personalInfo: { ...userData.personalInfo, fullName: e.target.value }
-                                    })}
-                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    disabled={!isEditing}
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Preferred Name</label>
-                                <input
-                                    type="text"
-                                    value={userData.personalInfo.preferredName}
-                                    onChange={(e) => setUserData({
-                                        ...userData,
-                                        personalInfo: { ...userData.personalInfo, preferredName: e.target.value }
-                                    })}
-                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    disabled={!isEditing}
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
-                                <input
-                                    type="date"
-                                    value={userData.personalInfo.dateOfBirth}
-                                    onChange={(e) => setUserData({
-                                        ...userData,
-                                        personalInfo: { ...userData.personalInfo, dateOfBirth: e.target.value }
-                                    })}
-                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    disabled={!isEditing}
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
-                                <select
-                                    value={userData.personalInfo.gender}
-                                    onChange={(e) => setUserData({
-                                        ...userData,
-                                        personalInfo: { ...userData.personalInfo, gender: e.target.value }
-                                    })}
-                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    disabled={!isEditing}
-                                >
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Non-binary">Non-binary</option>
-                                    <option value="Prefer not to say">Prefer not to say</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            <h3 className="text-lg font-semibold text-gray-800">Contact Details</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Primary Email</label>
-                                    <div className="flex items-center gap-2">
-                                        <Mail size={18} className="text-gray-500" />
-                                        <input
-                                            type="email"
-                                            value={userData.personalInfo.primaryEmail}
-                                            className="w-full px-4 py-2 border rounded-lg"
-                                            disabled
-                                        />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
-                                    <div className="flex items-center gap-2">
-                                        <Phone size={18} className="text-gray-500" />
-                                        <input
-                                            type="tel"
-                                            value={userData.personalInfo.mobileNumber}
-                                            onChange={(e) => setUserData({
-                                                ...userData,
-                                                personalInfo: { ...userData.personalInfo, mobileNumber: e.target.value }
-                                            })}
-                                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                            disabled={!isEditing}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Current Address</label>
-                                <div className="flex items-center gap-2">
-                                    <MapPin size={18} className="text-gray-500" />
+                            {Object.entries({
+                                'Full Name': userData.personalInfo.fullName,
+                                'Preferred Name': userData.personalInfo.preferredName,
+                                'Date of Birth': userData.personalInfo.dateOfBirth,
+                                'Gender': userData.personalInfo.gender,
+                                'Pronouns': userData.personalInfo.pronouns,
+                                'Nationality': userData.personalInfo.nationality,
+                                'Work Authorization': userData.personalInfo.workAuthorization
+                            }).map(([label, value]) => (
+                                <div key={label}>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
                                     <input
-                                        type="text"
-                                        value={userData.personalInfo.currentAddress}
+                                        type={label.includes('Date') ? 'date' : 'text'}
+                                        value={value}
                                         onChange={(e) => setUserData({
                                             ...userData,
-                                            personalInfo: { ...userData.personalInfo, currentAddress: e.target.value }
+                                            personalInfo: { ...userData.personalInfo, [label.toLowerCase().replace(' ', '')]: e.target.value }
                                         })}
                                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         disabled={!isEditing}
                                     />
                                 </div>
-                            </div>
+                            ))}
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="text-lg font-semibold text-gray-800">Languages</h3>
-                            {userData.personalInfo.languages.map((lang, index) => (
-                                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                                    <div>
-                                        <span className="font-medium">{lang.language}</span>
-                                        <span className="ml-2 text-sm text-gray-600">({lang.proficiency})</span>
+                            <SectionHeader
+                                title="Languages"
+                                onAdd={addLanguage}
+                            />
+                            {userData.personalInfo.languages.map((lang) => (
+                                <div key={lang.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4">
+                                        <input
+                                            value={lang.language}
+                                            onChange={(e) => {
+                                                const updated = userData.personalInfo.languages.map(l =>
+                                                    l.id === lang.id ? { ...l, language: e.target.value } : l
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    personalInfo: { ...userData.personalInfo, languages: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Language"
+                                        />
+                                        <select
+                                            value={lang.proficiency}
+                                            onChange={(e) => {
+                                                const updated = userData.personalInfo.languages.map(l =>
+                                                    l.id === lang.id ? { ...l, proficiency: e.target.value } : l
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    personalInfo: { ...userData.personalInfo, languages: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        >
+                                            <option value="Native">Native</option>
+                                            <option value="Fluent">Fluent</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Basic">Basic</option>
+                                        </select>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="5"
+                                            value={lang.reading}
+                                            onChange={(e) => {
+                                                const updated = userData.personalInfo.languages.map(l =>
+                                                    l.id === lang.id ? { ...l, reading: parseInt(e.target.value) } : l
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    personalInfo: { ...userData.personalInfo, languages: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="5"
+                                            value={lang.speaking}
+                                            onChange={(e) => {
+                                                const updated = userData.personalInfo.languages.map(l =>
+                                                    l.id === lang.id ? { ...l, speaking: parseInt(e.target.value) } : l
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    personalInfo: { ...userData.personalInfo, languages: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
                                     </div>
-                                    <div className="flex gap-4 text-sm text-gray-600">
-                                        <span>Reading: {lang.reading}/5</span>
-                                        <span>Writing: {lang.writing}/5</span>
-                                        <span>Speaking: {lang.speaking}/5</span>
-                                    </div>
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('personalInfo.languages', lang.id)}
+                                            className="ml-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                        >
+                                            <Trash2 size={18} />
+                                        </button>
+                                    )}
                                 </div>
                             ))}
+                        </div>
+
+                        <div className="space-y-4">
+                            <h3 className="text-lg font-semibold text-gray-800">Contact Details</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {Object.entries({
+                                    'Primary Email': userData.personalInfo.primaryEmail,
+                                    'Mobile Number': userData.personalInfo.mobileNumber,
+                                    'Current Address': userData.personalInfo.currentAddress,
+                                    'Permanent Address': userData.personalInfo.permanentAddress
+                                }).map(([label, value]) => (
+                                    <div key={label}>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+                                        <input
+                                            type={label.includes('Email') ? 'email' : 'text'}
+                                            value={value}
+                                            onChange={(e) => setUserData({
+                                                ...userData,
+                                                personalInfo: { ...userData.personalInfo, [label.toLowerCase().replace(' ', '')]: e.target.value }
+                                            })}
+                                            className="w-full px-4 py-2 border rounded-lg"
+                                            disabled={!isEditing || label.includes('Primary Email')}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 );
 
             case 'experience':
                 return (
-                    <div className="space-y-6">
-                        <div className="flex justify-between items-center">
-                            <h2 className="text-xl font-bold text-gray-800">Work Experience</h2>
-                            {isEditing && (
-                                <button
-                                    onClick={addExperience}
-                                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                                >
-                                    <Plus size={18} />
-                                    Add Experience
-                                </button>
-                            )}
-                        </div>
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Work Experience"
+                            onAdd={addExperience}
+                        />
 
                         {userData.experience.map((exp) => (
-                            <div key={exp.id} className="bg-white border rounded-xl p-6 shadow-sm">
-                                <div className="flex justify-between items-start">
+                            <div key={exp.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('experience', exp.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={exp.jobTitle}
+                                        onChange={(e) => {
+                                            const updated = userData.experience.map(e =>
+                                                e.id === exp.id ? { ...e, jobTitle: e.target.value } : e
+                                            );
+                                            setUserData({ ...userData, experience: updated });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Job Title"
+                                    />
+                                    <input
+                                        value={exp.company}
+                                        onChange={(e) => {
+                                            const updated = userData.experience.map(e =>
+                                                e.id === exp.id ? { ...e, company: e.target.value } : e
+                                            );
+                                            setUserData({ ...userData, experience: updated });
+                                        }}
+                                        className="text-lg text-blue-600 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Company"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                     <div>
-                                        <h3 className="text-xl font-bold text-gray-900">{exp.jobTitle}</h3>
-                                        <p className="text-lg text-blue-600">{exp.company}</p>
-                                        <div className="flex items-center gap-4 mt-2 text-gray-600">
-                                            <Calendar size={16} />
-                                            <span>{exp.startDate} - {exp.endDate}</span>
-                                            <MapPin size={16} />
-                                            <span>{exp.location}</span>
-                                            <Briefcase size={16} />
-                                            <span>{exp.employmentType}</span>
-                                        </div>
-                                        {exp.salary && (
-                                            <div className="flex items-center gap-2 mt-2 text-gray-700">
-                                                <DollarSign size={16} />
-                                                <span>{exp.salary.currency} {exp.salary.base.toLocaleString()}/year</span>
-                                                {exp.salary.bonus > 0 && (
-                                                    <span className="text-green-600">+ {exp.salary.bonus.toLocaleString()} bonus</span>
-                                                )}
-                                            </div>
-                                        )}
+                                        <label className="block text-sm text-gray-600 mb-1">Start Date</label>
+                                        <input
+                                            type="date"
+                                            value={exp.startDate}
+                                            onChange={(e) => {
+                                                const updated = userData.experience.map(e =>
+                                                    e.id === exp.id ? { ...e, startDate: e.target.value } : e
+                                                );
+                                                setUserData({ ...userData, experience: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
                                     </div>
-                                    {isEditing && (
-                                        <div className="flex gap-2">
-                                            <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg">
-                                                <Edit2 size={18} />
-                                            </button>
-                                            <button
-                                                onClick={() => deleteExperience(exp.id)}
-                                                className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
-                                            >
-                                                <Trash2 size={18} />
-                                            </button>
-                                        </div>
-                                    )}
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">End Date</label>
+                                        <input
+                                            type="date"
+                                            value={exp.endDate}
+                                            onChange={(e) => {
+                                                const updated = userData.experience.map(e =>
+                                                    e.id === exp.id ? { ...e, endDate: e.target.value } : e
+                                                );
+                                                setUserData({ ...userData, experience: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Present"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Location</label>
+                                        <input
+                                            value={exp.location}
+                                            onChange={(e) => {
+                                                const updated = userData.experience.map(e =>
+                                                    e.id === exp.id ? { ...e, location: e.target.value } : e
+                                                );
+                                                setUserData({ ...userData, experience: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Location"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="mt-4">
-                                    <h4 className="font-semibold text-gray-800 mb-2">Key Responsibilities:</h4>
-                                    <ul className="list-disc list-inside space-y-1 text-gray-700">
-                                        {exp.responsibilities.map((resp, idx) => (
-                                            <li key={idx}>{resp}</li>
-                                        ))}
-                                    </ul>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Responsibilities</label>
+                                    {exp.responsibilities.map((resp, idx) => (
+                                        <div key={idx} className="flex gap-2 mb-2">
+                                            <input
+                                                value={resp}
+                                                onChange={(e) => {
+                                                    const updatedResp = [...exp.responsibilities];
+                                                    updatedResp[idx] = e.target.value;
+                                                    const updatedExp = userData.experience.map(e =>
+                                                        e.id === exp.id ? { ...e, responsibilities: updatedResp } : e
+                                                    );
+                                                    setUserData({ ...userData, experience: updatedExp });
+                                                }}
+                                                className="flex-1 px-3 py-1 border rounded"
+                                                disabled={!isEditing}
+                                            />
+                                            {isEditing && (
+                                                <button
+                                                    onClick={() => {
+                                                        const updatedResp = exp.responsibilities.filter((_, i) => i !== idx);
+                                                        const updatedExp = userData.experience.map(e =>
+                                                            e.id === exp.id ? { ...e, responsibilities: updatedResp } : e
+                                                        );
+                                                        setUserData({ ...userData, experience: updatedExp });
+                                                    }}
+                                                    className="p-2 text-red-600 hover:bg-red-50 rounded"
+                                                >
+                                                    <Trash2 size={16} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    ))}
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => {
+                                                const updatedResp = [...exp.responsibilities, ""];
+                                                const updatedExp = userData.experience.map(e =>
+                                                    e.id === exp.id ? { ...e, responsibilities: updatedResp } : e
+                                                );
+                                                setUserData({ ...userData, experience: updatedExp });
+                                            }}
+                                            className="mt-2 flex items-center gap-2 text-blue-600 hover:text-blue-800"
+                                        >
+                                            <Plus size={16} />
+                                            Add Responsibility
+                                        </button>
+                                    )}
                                 </div>
 
-                                {exp.projects && exp.projects.length > 0 && (
+                                {isEditing && exp.projects && (
                                     <div className="mt-6">
-                                        <h4 className="font-semibold text-gray-800 mb-3">Project Highlights:</h4>
+                                        <h4 className="font-semibold text-gray-800 mb-3">Projects</h4>
                                         {exp.projects.map((project, idx) => (
                                             <div key={idx} className="bg-gray-50 rounded-lg p-4 mt-2">
-                                                <h5 className="font-medium text-gray-900">{project.name}</h5>
-                                                <div className="flex flex-wrap gap-2 mt-2">
-                                                    {project.technologies.map((tech, techIdx) => (
-                                                        <span key={techIdx} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                              {tech}
-                            </span>
-                                                    ))}
+                                                <div className="flex justify-between">
+                                                    <input
+                                                        value={project.name}
+                                                        className="font-medium text-gray-900 bg-transparent border-b"
+                                                        disabled={!isEditing}
+                                                        placeholder="Project Name"
+                                                    />
+                                                    {isEditing && (
+                                                        <button className="text-red-600">
+                                                            <Trash2 size={16} />
+                                                        </button>
+                                                    )}
                                                 </div>
-                                                <p className="mt-2 text-gray-600">{project.outcome}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -536,62 +869,124 @@ const JobSeekerProfile = () => {
 
             case 'education':
                 return (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Education"
+                            onAdd={addEducation}
+                        />
+
                         {userData.education.map((edu) => (
-                            <div key={edu.id} className="bg-white border rounded-xl p-6 shadow-sm">
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <h3 className="text-xl font-bold text-gray-900">{edu.degree} in {edu.field}</h3>
-                                        <p className="text-lg text-blue-600">{edu.institution}</p>
-                                        <div className="flex items-center gap-4 mt-2 text-gray-600">
-                                            <Calendar size={16} />
-                                            <span>{edu.startDate} - {edu.endDate}</span>
-                                            <MapPin size={16} />
-                                            <span>{edu.location}</span>
-                                            {edu.grade && (
-                                                <span className="font-semibold">Grade: {edu.grade}</span>
-                                            )}
-                                        </div>
-                                        {edu.honors && (
-                                            <div className="mt-2">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-                          <Award size={14} className="mr-1" />
-                            {edu.honors}
-                        </span>
-                                            </div>
-                                        )}
-                                    </div>
-                                    {isEditing && (
-                                        <div className="flex gap-2">
-                                            <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg">
-                                                <Edit2 size={18} />
-                                            </button>
-                                            <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
-                                                <Trash2 size={18} />
-                                            </button>
-                                        </div>
-                                    )}
+                            <div key={edu.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('education', edu.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={edu.degree}
+                                        onChange={(e) => {
+                                            const updated = userData.education.map(e =>
+                                                e.id === edu.id ? { ...e, degree: e.target.value } : e
+                                            );
+                                            setUserData({ ...userData, education: updated });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Degree"
+                                    />
+                                    <input
+                                        value={edu.field}
+                                        onChange={(e) => {
+                                            const updated = userData.education.map(e =>
+                                                e.id === edu.id ? { ...e, field: e.target.value } : e
+                                            );
+                                            setUserData({ ...userData, education: updated });
+                                        }}
+                                        className="text-lg text-gray-700 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Field of Study"
+                                    />
                                 </div>
 
-                                {edu.thesis && (
-                                    <div className="mt-4">
-                                        <h4 className="font-semibold text-gray-800">Thesis:</h4>
-                                        <p className="text-gray-700">{edu.thesis}</p>
-                                    </div>
-                                )}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={edu.institution}
+                                        onChange={(e) => {
+                                            const updated = userData.education.map(e =>
+                                                e.id === edu.id ? { ...e, institution: e.target.value } : e
+                                            );
+                                            setUserData({ ...userData, education: updated });
+                                        }}
+                                        className="text-blue-600 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Institution"
+                                    />
+                                    <input
+                                        value={edu.location}
+                                        onChange={(e) => {
+                                            const updated = userData.education.map(e =>
+                                                e.id === edu.id ? { ...e, location: e.target.value } : e
+                                            );
+                                            setUserData({ ...userData, education: updated });
+                                        }}
+                                        className="px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Location"
+                                    />
+                                </div>
 
-                                {edu.coursework && edu.coursework.length > 0 && (
-                                    <div className="mt-4">
-                                        <h4 className="font-semibold text-gray-800 mb-2">Key Coursework:</h4>
-                                        <div className="flex flex-wrap gap-2">
-                                            {edu.coursework.map((course, idx) => (
-                                                <span key={idx} className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">
-                          {course}
-                        </span>
-                                            ))}
-                                        </div>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Start Date</label>
+                                        <input
+                                            type="date"
+                                            value={edu.startDate}
+                                            onChange={(e) => {
+                                                const updated = userData.education.map(e =>
+                                                    e.id === edu.id ? { ...e, startDate: e.target.value } : e
+                                                );
+                                                setUserData({ ...userData, education: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
                                     </div>
-                                )}
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">End Date</label>
+                                        <input
+                                            type="date"
+                                            value={edu.endDate}
+                                            onChange={(e) => {
+                                                const updated = userData.education.map(e =>
+                                                    e.id === edu.id ? { ...e, endDate: e.target.value } : e
+                                                );
+                                                setUserData({ ...userData, education: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Grade/GPA</label>
+                                        <input
+                                            value={edu.grade}
+                                            onChange={(e) => {
+                                                const updated = userData.education.map(e =>
+                                                    e.id === edu.id ? { ...e, grade: e.target.value } : e
+                                                );
+                                                setUserData({ ...userData, education: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Grade/GPA"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -599,119 +994,272 @@ const JobSeekerProfile = () => {
 
             case 'skills':
                 return (
-                    <div className="space-y-6">
-                        <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Technical Skills</h3>
-                            <div className="space-y-4">
-                                {userData.skills.technical.map((skill, index) => (
-                                    <div key={index} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
-                                        <div>
-                                            <div className="flex items-center gap-3">
-                                                <span className="font-medium text-gray-900">{skill.name}</span>
-                                                <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">
-                          {skill.category}
-                        </span>
-                                            </div>
-                                            <div className="flex items-center gap-4 mt-1 text-sm text-gray-600">
-                                                <span>{skill.years} years experience</span>
-                                                <span>Last used: {skill.lastUsed}</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <div className="flex">
-                                                {[...Array(5)].map((_, i) => (
-                                                    <Star
-                                                        key={i}
-                                                        size={16}
-                                                        className={i < skill.proficiency ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}
-                                                    />
-                                                ))}
-                                            </div>
-                                        </div>
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Technical Skills"
+                            onAdd={() => addSkill('technical')}
+                        />
+
+                        <div className="space-y-4">
+                            {userData.skills.technical.map((skill) => (
+                                <div key={skill.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                    <div className="flex-1 grid grid-cols-1 md:grid-cols-5 gap-4">
+                                        <input
+                                            value={skill.name}
+                                            onChange={(e) => {
+                                                const updated = userData.skills.technical.map(s =>
+                                                    s.id === skill.id ? { ...s, name: e.target.value } : s
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    skills: { ...userData.skills, technical: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-2 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Skill Name"
+                                        />
+                                        <input
+                                            value={skill.category}
+                                            onChange={(e) => {
+                                                const updated = userData.skills.technical.map(s =>
+                                                    s.id === skill.id ? { ...s, category: e.target.value } : s
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    skills: { ...userData.skills, technical: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-2 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Category"
+                                        />
+                                        <select
+                                            value={skill.proficiency}
+                                            onChange={(e) => {
+                                                const updated = userData.skills.technical.map(s =>
+                                                    s.id === skill.id ? { ...s, proficiency: parseInt(e.target.value) } : s
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    skills: { ...userData.skills, technical: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-2 border rounded"
+                                            disabled={!isEditing}
+                                        >
+                                            {[1,2,3,4,5].map(num => (
+                                                <option key={num} value={num}>{num} - {num === 1 ? 'Beginner' : num === 5 ? 'Expert' : 'Intermediate'}</option>
+                                            ))}
+                                        </select>
+                                        <input
+                                            type="number"
+                                            value={skill.years}
+                                            onChange={(e) => {
+                                                const updated = userData.skills.technical.map(s =>
+                                                    s.id === skill.id ? { ...s, years: parseInt(e.target.value) } : s
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    skills: { ...userData.skills, technical: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-2 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Years"
+                                        />
+                                        <input
+                                            value={skill.lastUsed}
+                                            onChange={(e) => {
+                                                const updated = userData.skills.technical.map(s =>
+                                                    s.id === skill.id ? { ...s, lastUsed: e.target.value } : s
+                                                );
+                                                setUserData({
+                                                    ...userData,
+                                                    skills: { ...userData.skills, technical: updated }
+                                                });
+                                            }}
+                                            className="px-3 py-2 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="YYYY-MM"
+                                        />
                                     </div>
-                                ))}
-                            </div>
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('skills.technical', skill.id)}
+                                            className="ml-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                        >
+                                            <Trash2 size={18} />
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-white border rounded-xl p-6 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Soft Skills</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {userData.skills.softSkills.map((skill, idx) => (
-                                        <span key={idx} className="px-4 py-2 bg-green-100 text-green-800 rounded-lg">
-                      {skill}
-                    </span>
-                                    ))}
-                                </div>
-                            </div>
+                        <SectionHeader
+                            title="Soft Skills"
+                            onAdd={() => addSkill('softSkills')}
+                        />
 
-                            <div className="bg-white border rounded-xl p-6 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Methodologies</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {userData.skills.methodologies.map((method, idx) => (
-                                        <span key={idx} className="px-4 py-2 bg-purple-100 text-purple-800 rounded-lg">
-                      {method}
-                    </span>
-                                    ))}
+                        <div className="flex flex-wrap gap-2">
+                            {userData.skills.softSkills.map((skill) => (
+                                <div key={skill.id} className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-lg">
+                                    <input
+                                        value={skill.name}
+                                        onChange={(e) => {
+                                            const updated = userData.skills.softSkills.map(s =>
+                                                s.id === skill.id ? { ...s, name: e.target.value } : s
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                skills: { ...userData.skills, softSkills: updated }
+                                            });
+                                        }}
+                                        className="bg-transparent border-none focus:outline-none"
+                                        disabled={!isEditing}
+                                    />
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('skills.softSkills', skill.id)}
+                                            className="text-red-600 hover:text-red-800"
+                                        >
+                                            <X size={14} />
+                                        </button>
+                                    )}
                                 </div>
-                            </div>
+                            ))}
+                        </div>
+
+                        <SectionHeader
+                            title="Methodologies"
+                            onAdd={() => addSkill('methodologies')}
+                        />
+
+                        <div className="flex flex-wrap gap-2">
+                            {userData.skills.methodologies.map((method) => (
+                                <div key={method.id} className="flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-800 rounded-lg">
+                                    <input
+                                        value={method.name}
+                                        onChange={(e) => {
+                                            const updated = userData.skills.methodologies.map(m =>
+                                                m.id === method.id ? { ...m, name: e.target.value } : m
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                skills: { ...userData.skills, methodologies: updated }
+                                            });
+                                        }}
+                                        className="bg-transparent border-none focus:outline-none"
+                                        disabled={!isEditing}
+                                    />
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('skills.methodologies', method.id)}
+                                            className="text-red-600 hover:text-red-800"
+                                        >
+                                            <X size={14} />
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 );
 
             case 'certifications':
                 return (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Certifications"
+                            onAdd={addCertification}
+                        />
+
                         {userData.certifications.map((cert) => (
-                            <div key={cert.id} className="bg-white border rounded-xl p-6 shadow-sm">
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <div className="flex items-center gap-3">
-                                            <h3 className="text-xl font-bold text-gray-900">{cert.name}</h3>
-                                            {cert.verified && (
-                                                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                          <CheckCircle size={12} className="mr-1" />
-                          Verified
-                        </span>
-                                            )}
-                                        </div>
-                                        <p className="text-lg text-blue-600">{cert.authority}</p>
-                                        <div className="flex items-center gap-4 mt-2 text-gray-600">
-                                            <Calendar size={16} />
-                                            <span>Issued: {cert.issueDate}</span>
-                                            {cert.expiryDate && (
-                                                <>
-                                                    <span>•</span>
-                                                    <span>Expires: {cert.expiryDate}</span>
-                                                </>
-                                            )}
-                                        </div>
-                                        {cert.certificateId && (
-                                            <p className="mt-2 text-sm text-gray-600">ID: {cert.certificateId}</p>
-                                        )}
-                                    </div>
-                                    {isEditing && (
-                                        <div className="flex gap-2">
-                                            <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg">
-                                                <Edit2 size={18} />
-                                            </button>
-                                            <button className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
-                                                <Trash2 size={18} />
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
-                                {cert.credentialUrl && (
-                                    <a
-                                        href={cert.credentialUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 mt-4 text-blue-600 hover:text-blue-800"
+                            <div key={cert.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('certifications', cert.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
                                     >
-                                        <Globe size={16} />
-                                        View Credential
-                                    </a>
+                                        <Trash2 size={18} />
+                                    </button>
                                 )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={cert.name}
+                                        onChange={(e) => {
+                                            const updated = userData.certifications.map(c =>
+                                                c.id === cert.id ? { ...c, name: e.target.value } : c
+                                            );
+                                            setUserData({ ...userData, certifications: updated });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Certification Name"
+                                    />
+                                    <input
+                                        value={cert.authority}
+                                        onChange={(e) => {
+                                            const updated = userData.certifications.map(c =>
+                                                c.id === cert.id ? { ...c, authority: e.target.value } : c
+                                            );
+                                            setUserData({ ...userData, certifications: updated });
+                                        }}
+                                        className="text-lg text-blue-600 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Issuing Authority"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Issue Date</label>
+                                        <input
+                                            type="date"
+                                            value={cert.issueDate}
+                                            onChange={(e) => {
+                                                const updated = userData.certifications.map(c =>
+                                                    c.id === cert.id ? { ...c, issueDate: e.target.value } : c
+                                                );
+                                                setUserData({ ...userData, certifications: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Expiry Date</label>
+                                        <input
+                                            type="date"
+                                            value={cert.expiryDate || ''}
+                                            onChange={(e) => {
+                                                const updated = userData.certifications.map(c =>
+                                                    c.id === cert.id ? { ...c, expiryDate: e.target.value } : c
+                                                );
+                                                setUserData({ ...userData, certifications: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="No expiry"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Certificate ID</label>
+                                        <input
+                                            value={cert.certificateId}
+                                            onChange={(e) => {
+                                                const updated = userData.certifications.map(c =>
+                                                    c.id === cert.id ? { ...c, certificateId: e.target.value } : c
+                                                );
+                                                setUserData({ ...userData, certifications: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Certificate ID"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -719,31 +1267,94 @@ const JobSeekerProfile = () => {
 
             case 'achievements':
                 return (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Achievements"
+                            onAdd={addAchievement}
+                        />
+
                         {userData.achievements.map((achievement) => (
-                            <div key={achievement.id} className="bg-white border rounded-xl p-6 shadow-sm">
-                                <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-blue-100 rounded-lg">
-                                        <Award size={24} className="text-blue-600" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex justify-between items-start">
-                                            <div>
-                                                <h3 className="text-lg font-bold text-gray-900">{achievement.name}</h3>
-                                                <p className="text-blue-600">{achievement.organization}</p>
-                                                <p className="text-gray-600 mt-2">{achievement.description}</p>
-                                            </div>
-                                            <span className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">
-                        {achievement.year}
-                      </span>
-                                        </div>
-                                        <div className="mt-3">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                        {achievement.type}
-                      </span>
-                                        </div>
-                                    </div>
+                            <div key={achievement.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('achievements', achievement.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={achievement.name}
+                                        onChange={(e) => {
+                                            const updated = userData.achievements.map(a =>
+                                                a.id === achievement.id ? { ...a, name: e.target.value } : a
+                                            );
+                                            setUserData({ ...userData, achievements: updated });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Achievement Name"
+                                    />
+                                    <select
+                                        value={achievement.type}
+                                        onChange={(e) => {
+                                            const updated = userData.achievements.map(a =>
+                                                a.id === achievement.id ? { ...a, type: e.target.value } : a
+                                            );
+                                            setUserData({ ...userData, achievements: updated });
+                                        }}
+                                        className="px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                    >
+                                        <option value="Award">Award</option>
+                                        <option value="Publication">Publication</option>
+                                        <option value="Patent">Patent</option>
+                                        <option value="Recognition">Recognition</option>
+                                    </select>
                                 </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={achievement.organization}
+                                        onChange={(e) => {
+                                            const updated = userData.achievements.map(a =>
+                                                a.id === achievement.id ? { ...a, organization: e.target.value } : a
+                                            );
+                                            setUserData({ ...userData, achievements: updated });
+                                        }}
+                                        className="text-blue-600 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Organization"
+                                    />
+                                    <input
+                                        value={achievement.year}
+                                        onChange={(e) => {
+                                            const updated = userData.achievements.map(a =>
+                                                a.id === achievement.id ? { ...a, year: e.target.value } : a
+                                            );
+                                            setUserData({ ...userData, achievements: updated });
+                                        }}
+                                        className="px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Year"
+                                    />
+                                </div>
+
+                                <textarea
+                                    value={achievement.description}
+                                    onChange={(e) => {
+                                        const updated = userData.achievements.map(a =>
+                                            a.id === achievement.id ? { ...a, description: e.target.value } : a
+                                        );
+                                        setUserData({ ...userData, achievements: updated });
+                                    }}
+                                    className="w-full px-3 py-2 border rounded"
+                                    disabled={!isEditing}
+                                    placeholder="Description"
+                                    rows={3}
+                                />
                             </div>
                         ))}
                     </div>
@@ -751,206 +1362,540 @@ const JobSeekerProfile = () => {
 
             case 'preferences':
                 return (
-                    <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-white border rounded-xl p-6 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Career Goals</h3>
-                                <div className="space-y-3">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Desired Titles</label>
-                                        <div className="flex flex-wrap gap-2 mt-2">
-                                            {userData.jobPreferences.desiredTitles.map((title, idx) => (
-                                                <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
-                          {title}
-                        </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Target Industry</label>
-                                        <p className="mt-1 text-gray-900">{userData.jobPreferences.targetIndustry}</p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Career Level</label>
-                                        <p className="mt-1 text-gray-900">{userData.jobPreferences.careerLevel}</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Desired Job Titles"
+                            onAdd={addDesiredTitle}
+                        />
 
-                            <div className="bg-white border rounded-xl p-6 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Work Preferences</h3>
-                                <div className="space-y-3">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Work Mode</label>
-                                        <p className="mt-1 text-gray-900">{userData.jobPreferences.workMode}</p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Work Schedule</label>
-                                        <p className="mt-1 text-gray-900">{userData.jobPreferences.workSchedule}</p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Travel Willingness</label>
-                                        <p className="mt-1 text-gray-900">{userData.jobPreferences.travelWillingness}</p>
-                                    </div>
+                        <div className="flex flex-wrap gap-2 mb-8">
+                            {userData.jobPreferences.desiredTitles.map((title) => (
+                                <div key={title.id} className="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-800 rounded-full">
+                                    <input
+                                        value={title.title}
+                                        onChange={(e) => {
+                                            const updated = userData.jobPreferences.desiredTitles.map(t =>
+                                                t.id === title.id ? { ...t, title: e.target.value } : t
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                jobPreferences: { ...userData.jobPreferences, desiredTitles: updated }
+                                            });
+                                        }}
+                                        className="bg-transparent border-none focus:outline-none"
+                                        disabled={!isEditing}
+                                    />
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('jobPreferences.desiredTitles', title.id)}
+                                            className="text-red-600 hover:text-red-800"
+                                        >
+                                            <X size={14} />
+                                        </button>
+                                    )}
                                 </div>
+                            ))}
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Career Level</label>
+                                <select
+                                    value={userData.jobPreferences.careerLevel}
+                                    onChange={(e) => setUserData({
+                                        ...userData,
+                                        jobPreferences: { ...userData.jobPreferences, careerLevel: e.target.value }
+                                    })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                    disabled={!isEditing}
+                                >
+                                    <option>Individual Contributor</option>
+                                    <option>Team Lead</option>
+                                    <option>Manager</option>
+                                    <option>Director</option>
+                                    <option>VP</option>
+                                    <option>C-Level</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Work Mode</label>
+                                <select
+                                    value={userData.jobPreferences.workMode}
+                                    onChange={(e) => setUserData({
+                                        ...userData,
+                                        jobPreferences: { ...userData.jobPreferences, workMode: e.target.value }
+                                    })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                    disabled={!isEditing}
+                                >
+                                    <option>Fully Remote</option>
+                                    <option>Hybrid</option>
+                                    <option>Fully On-site</option>
+                                    <option>Flexible</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Compensation Expectations</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Minimum Salary</label>
-                                    <div className="flex items-center gap-2 mt-2">
-                                        <DollarSign size={20} className="text-gray-500" />
-                                        <span className="text-2xl font-bold text-gray-900">
-                      ${userData.jobPreferences.minSalary.toLocaleString()}
-                    </span>
-                                        <span className="text-gray-600">/year</span>
-                                    </div>
+                        <SectionHeader
+                            title="Benefits Prioritization"
+                            onAdd={addBenefit}
+                        />
+
+                        <div className="space-y-3">
+                            {userData.jobPreferences.benefits.map((benefit) => (
+                                <div key={benefit.id} className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+                                    <select
+                                        value={benefit.priority}
+                                        onChange={(e) => {
+                                            const updated = userData.jobPreferences.benefits.map(b =>
+                                                b.id === benefit.id ? { ...b, priority: parseInt(e.target.value) } : b
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                jobPreferences: { ...userData.jobPreferences, benefits: updated }
+                                            });
+                                        }}
+                                        className="px-3 py-1 border rounded"
+                                        disabled={!isEditing}
+                                    >
+                                        {[1,2,3,4,5].map(num => (
+                                            <option key={num} value={num}>Priority {num}</option>
+                                        ))}
+                                    </select>
+                                    <input
+                                        value={benefit.name}
+                                        onChange={(e) => {
+                                            const updated = userData.jobPreferences.benefits.map(b =>
+                                                b.id === benefit.id ? { ...b, name: e.target.value } : b
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                jobPreferences: { ...userData.jobPreferences, benefits: updated }
+                                            });
+                                        }}
+                                        className="flex-1 px-3 py-1 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Benefit Name"
+                                    />
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('jobPreferences.benefits', benefit.id)}
+                                            className="p-2 text-red-600 hover:bg-red-50 rounded"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    )}
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Expected Range</label>
-                                    <div className="mt-2">
-                                        <div className="flex items-center gap-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        ${userData.jobPreferences.expectedRange.low.toLocaleString()}
-                      </span>
-                                            <span className="text-gray-500">-</span>
-                                            <span className="text-lg font-semibold text-gray-900">
-                        ${userData.jobPreferences.expectedRange.high.toLocaleString()}
-                      </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Notice Period</label>
-                                    <p className="mt-2 text-lg font-semibold text-gray-900">{userData.jobPreferences.noticePeriod}</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 );
 
             case 'portfolio':
                 return (
-                    <div className="space-y-6">
-                        <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Digital Presence</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Personal Website</label>
-                                    <a
-                                        href={userData.portfolio.website}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800"
-                                    >
-                                        <Globe size={16} />
-                                        {userData.portfolio.website}
-                                    </a>
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">GitHub</label>
-                                    <a
-                                        href={userData.portfolio.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800"
-                                    >
-                                        <Github size={16} />
-                                        {userData.portfolio.github}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Projects"
+                            onAdd={addProject}
+                        />
 
-                        {userData.portfolio.projects.length > 0 && (
-                            <div className="bg-white border rounded-xl p-6 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Featured Projects</h3>
-                                <div className="space-y-4">
-                                    {userData.portfolio.projects.map((project, idx) => (
-                                        <div key={idx} className="p-4 border rounded-lg hover:bg-gray-50">
-                                            <h4 className="font-semibold text-gray-900">{project.name}</h4>
-                                            <p className="text-sm text-gray-600 mt-1">{project.description}</p>
-                                            <a
-                                                href={project.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-1 mt-2 text-blue-600 hover:text-blue-800 text-sm"
-                                            >
-                                                <Globe size={14} />
-                                                View Project
-                                            </a>
-                                        </div>
-                                    ))}
+                        {userData.portfolio.projects.map((project) => (
+                            <div key={project.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('portfolio.projects', project.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={project.name}
+                                        onChange={(e) => {
+                                            const updated = userData.portfolio.projects.map(p =>
+                                                p.id === project.id ? { ...p, name: e.target.value } : p
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                portfolio: { ...userData.portfolio, projects: updated }
+                                            });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Project Name"
+                                    />
+                                    <select
+                                        value={project.type}
+                                        onChange={(e) => {
+                                            const updated = userData.portfolio.projects.map(p =>
+                                                p.id === project.id ? { ...p, type: e.target.value } : p
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                portfolio: { ...userData.portfolio, projects: updated }
+                                            });
+                                        }}
+                                        className="px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                    >
+                                        <option value="Case Study">Case Study</option>
+                                        <option value="Open Source">Open Source</option>
+                                        <option value="Personal Project">Personal Project</option>
+                                        <option value="Client Project">Client Project</option>
+                                    </select>
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600 mb-1">URL</label>
+                                    <input
+                                        type="url"
+                                        value={project.url}
+                                        onChange={(e) => {
+                                            const updated = userData.portfolio.projects.map(p =>
+                                                p.id === project.id ? { ...p, url: e.target.value } : p
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                portfolio: { ...userData.portfolio, projects: updated }
+                                            });
+                                        }}
+                                        className="w-full px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="https://example.com/project"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm text-gray-600 mb-1">Description</label>
+                                    <textarea
+                                        value={project.description}
+                                        onChange={(e) => {
+                                            const updated = userData.portfolio.projects.map(p =>
+                                                p.id === project.id ? { ...p, description: e.target.value } : p
+                                            );
+                                            setUserData({
+                                                ...userData,
+                                                portfolio: { ...userData.portfolio, projects: updated }
+                                            });
+                                        }}
+                                        className="w-full px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Project description..."
+                                        rows={3}
+                                    />
                                 </div>
                             </div>
-                        )}
-
-                        {userData.portfolio.videoIntroduction && (
-                            <div className="bg-white border rounded-xl p-6 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Video Introduction</h3>
-                                <a
-                                    href={userData.portfolio.videoIntroduction}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                                >
-                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                                    </svg>
-                                    Watch Video Introduction
-                                </a>
-                            </div>
-                        )}
+                        ))}
                     </div>
                 );
 
             case 'social':
                 return (
-                    <div className="space-y-6">
-                        <div className="flex justify-between items-center">
-                            <h2 className="text-xl font-bold text-gray-800">Social Media Profiles</h2>
-                            {isEditing && (
-                                <button
-                                    onClick={addSocialMedia}
-                                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                                >
-                                    <Plus size={18} />
-                                    Add Social Media
-                                </button>
-                            )}
-                        </div>
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Social Media Profiles"
+                            onAdd={addSocialMedia}
+                        />
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {userData.socialMedia.map((social, index) => (
-                                <div key={index} className="bg-white border rounded-xl p-4 shadow-sm">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-3">
-                                            <div className="p-2 bg-gray-100 rounded-lg">
-                                                {social.icon}
-                                            </div>
-                                            <div>
-                                                <h3 className="font-semibold text-gray-900">{social.platform}</h3>
-                                                <a
-                                                    href={social.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-sm text-blue-600 hover:text-blue-800 truncate block max-w-[200px]"
-                                                >
-                                                    {social.url}
-                                                </a>
-                                            </div>
+                            {userData.socialMedia.map((social) => (
+                                <div key={social.id} className="bg-white border rounded-xl p-4 shadow-sm relative">
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('socialMedia', social.id)}
+                                            className="absolute top-2 right-2 p-1 text-red-600 hover:bg-red-50 rounded-lg"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    )}
+
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="p-2 bg-gray-100 rounded-lg">
+                                            {social.icon}
                                         </div>
-                                        {isEditing && (
-                                            <button
-                                                onClick={() => deleteSocialMedia(index)}
-                                                className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                        <div className="flex-1">
+                                            <input
+                                                value={social.platform}
+                                                onChange={(e) => {
+                                                    const updated = userData.socialMedia.map(s =>
+                                                        s.id === social.id ? { ...s, platform: e.target.value } : s
+                                                    );
+                                                    setUserData({ ...userData, socialMedia: updated });
+                                                }}
+                                                className="w-full font-semibold text-gray-900 bg-transparent border-b focus:border-blue-500 focus:outline-none"
+                                                disabled={!isEditing}
+                                                placeholder="Platform Name"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Profile URL</label>
+                                        <input
+                                            type="url"
+                                            value={social.url}
+                                            onChange={(e) => {
+                                                const updated = userData.socialMedia.map(s =>
+                                                    s.id === social.id ? { ...s, url: e.target.value } : s
+                                                );
+                                                setUserData({ ...userData, socialMedia: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded text-sm"
+                                            disabled={!isEditing}
+                                            placeholder="https://example.com/username"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+
+            case 'volunteer':
+                return (
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Volunteer Experience"
+                            onAdd={addVolunteerExperience}
+                        />
+
+                        {userData.volunteerExperience.map((volunteer) => (
+                            <div key={volunteer.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('volunteerExperience', volunteer.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={volunteer.organization}
+                                        onChange={(e) => {
+                                            const updated = userData.volunteerExperience.map(v =>
+                                                v.id === volunteer.id ? { ...v, organization: e.target.value } : v
+                                            );
+                                            setUserData({ ...userData, volunteerExperience: updated });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Organization"
+                                    />
+                                    <input
+                                        value={volunteer.role}
+                                        onChange={(e) => {
+                                            const updated = userData.volunteerExperience.map(v =>
+                                                v.id === volunteer.id ? { ...v, role: e.target.value } : v
+                                            );
+                                            setUserData({ ...userData, volunteerExperience: updated });
+                                        }}
+                                        className="text-lg text-blue-600 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Role/Position"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Start Date</label>
+                                        <input
+                                            type="date"
+                                            value={volunteer.startDate}
+                                            onChange={(e) => {
+                                                const updated = userData.volunteerExperience.map(v =>
+                                                    v.id === volunteer.id ? { ...v, startDate: e.target.value } : v
+                                                );
+                                                setUserData({ ...userData, volunteerExperience: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">End Date</label>
+                                        <input
+                                            type="date"
+                                            value={volunteer.endDate}
+                                            onChange={(e) => {
+                                                const updated = userData.volunteerExperience.map(v =>
+                                                    v.id === volunteer.id ? { ...v, endDate: e.target.value } : v
+                                                );
+                                                setUserData({ ...userData, volunteerExperience: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                            placeholder="Present"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm text-gray-600 mb-1">Contributions</label>
+                                    <textarea
+                                        value={volunteer.contribributions.join('\n')}
+                                        onChange={(e) => {
+                                            const updated = userData.volunteerExperience.map(v =>
+                                                v.id === volunteer.id ? { ...v, contributions: e.target.value.split('\n') } : v
+                                            );
+                                            setUserData({ ...userData, volunteerExperience: updated });
+                                        }}
+                                        className="w-full px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Describe your contributions..."
+                                        rows={3}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                );
+
+            case 'memberships':
+                return (
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Professional Memberships"
+                            onAdd={addMembership}
+                        />
+
+                        {userData.memberships.map((membership) => (
+                            <div key={membership.id} className="bg-white border rounded-xl p-6 shadow-sm relative">
+                                {isEditing && (
+                                    <button
+                                        onClick={() => deleteItem('memberships', membership.id)}
+                                        className="absolute top-4 right-4 p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                    >
+                                        <Trash2 size={18} />
+                                    </button>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input
+                                        value={membership.organization}
+                                        onChange={(e) => {
+                                            const updated = userData.memberships.map(m =>
+                                                m.id === membership.id ? { ...m, organization: e.target.value } : m
+                                            );
+                                            setUserData({ ...userData, memberships: updated });
+                                        }}
+                                        className="text-xl font-bold text-gray-900 px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Organization"
+                                    />
+                                    <input
+                                        value={membership.memberId}
+                                        onChange={(e) => {
+                                            const updated = userData.memberships.map(m =>
+                                                m.id === membership.id ? { ...m, memberId: e.target.value } : m
+                                            );
+                                            setUserData({ ...userData, memberships: updated });
+                                        }}
+                                        className="px-3 py-2 border rounded"
+                                        disabled={!isEditing}
+                                        placeholder="Member ID"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Membership Level</label>
+                                        <select
+                                            value={membership.level}
+                                            onChange={(e) => {
+                                                const updated = userData.memberships.map(m =>
+                                                    m.id === membership.id ? { ...m, level: e.target.value } : m
+                                                );
+                                                setUserData({ ...userData, memberships: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        >
+                                            <option value="Student">Student</option>
+                                            <option value="Professional">Professional</option>
+                                            <option value="Fellow">Fellow</option>
+                                            <option value="Lifetime">Lifetime</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm text-gray-600 mb-1">Start Date</label>
+                                        <input
+                                            type="date"
+                                            value={membership.startDate}
+                                            onChange={(e) => {
+                                                const updated = userData.memberships.map(m =>
+                                                    m.id === membership.id ? { ...m, startDate: e.target.value } : m
+                                                );
+                                                setUserData({ ...userData, memberships: updated });
+                                            }}
+                                            className="w-full px-3 py-1 border rounded"
+                                            disabled={!isEditing}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                );
+
+            case 'hobbies':
+                return (
+                    <div className="space-y-8">
+                        <SectionHeader
+                            title="Hobbies & Interests"
+                            onAdd={addHobby}
+                        />
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {userData.hobbies.map((hobby) => (
+                                <div key={hobby.id} className="bg-white border rounded-xl p-4 shadow-sm relative">
+                                    {isEditing && (
+                                        <button
+                                            onClick={() => deleteItem('hobbies', hobby.id)}
+                                            className="absolute top-2 right-2 p-1 text-red-600 hover:bg-red-50 rounded-lg"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    )}
+
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2 bg-purple-100 rounded-lg">
+                                            <Heart size={20} className="text-purple-600" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <input
+                                                value={hobby.name}
+                                                onChange={(e) => {
+                                                    const updated = userData.hobbies.map(h =>
+                                                        h.id === hobby.id ? { ...h, name: e.target.value } : h
+                                                    );
+                                                    setUserData({ ...userData, hobbies: updated });
+                                                }}
+                                                className="w-full font-semibold text-gray-900 bg-transparent border-b focus:border-blue-500 focus:outline-none"
+                                                disabled={!isEditing}
+                                                placeholder="Hobby Name"
+                                            />
+                                            <select
+                                                value={hobby.type}
+                                                onChange={(e) => {
+                                                    const updated = userData.hobbies.map(h =>
+                                                        h.id === hobby.id ? { ...h, type: e.target.value } : h
+                                                    );
+                                                    setUserData({ ...userData, hobbies: updated });
+                                                }}
+                                                className="w-full mt-2 text-sm text-gray-600 bg-transparent"
+                                                disabled={!isEditing}
                                             >
-                                                <Trash2 size={18} />
-                                            </button>
-                                        )}
+                                                <option value="Personal">Personal</option>
+                                                <option value="Professional">Professional</option>
+                                                <option value="Sports">Sports</option>
+                                                <option value="Arts">Arts</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -962,7 +1907,7 @@ const JobSeekerProfile = () => {
                 return (
                     <div className="space-y-6">
                         <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-4">
                                     <div className="p-3 bg-blue-100 rounded-lg">
                                         <FileText size={24} className="text-blue-600" />
@@ -970,14 +1915,16 @@ const JobSeekerProfile = () => {
                                     <div>
                                         <h3 className="text-xl font-bold text-gray-900">{userData.resume.fileName}</h3>
                                         <p className="text-gray-600">Last updated: {userData.resume.lastUpdated}</p>
-                                        <p className="text-sm text-gray-500">Size: {userData.resume.fileSize}</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-3">
-                                    <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                    <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                        <Download size={18} />
                                         Download
                                     </button>
-                                    <label className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition cursor-pointer">
+                                    <label className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition cursor-pointer">
+                                        <Upload size={18} />
+                                        Upload New
                                         <input
                                             type="file"
                                             className="hidden"
@@ -988,26 +1935,7 @@ const JobSeekerProfile = () => {
                                                 }
                                             }}
                                         />
-                                        Upload New
                                     </label>
-                                </div>
-                            </div>
-
-                            <div className="mt-6 border-t pt-6">
-                                <h4 className="font-semibold text-gray-800 mb-3">Resume Parsing Information</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div className="p-3 bg-gray-50 rounded-lg">
-                                        <div className="text-sm text-gray-600">Skills Detected</div>
-                                        <div className="font-semibold text-gray-900">24</div>
-                                    </div>
-                                    <div className="p-3 bg-gray-50 rounded-lg">
-                                        <div className="text-sm text-gray-600">Experience Years</div>
-                                        <div className="font-semibold text-gray-900">7</div>
-                                    </div>
-                                    <div className="p-3 bg-gray-50 rounded-lg">
-                                        <div className="text-sm text-gray-600">Last Scan</div>
-                                        <div className="font-semibold text-gray-900">Today</div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1018,89 +1946,23 @@ const JobSeekerProfile = () => {
                 return (
                     <div className="space-y-6">
                         <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Profile Visibility</h3>
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">Privacy Settings</h3>
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <h4 className="font-medium text-gray-900">Visibility Mode</h4>
-                                        <p className="text-sm text-gray-600">Control who can see your profile</p>
+                                        <h4 className="font-medium text-gray-900">Profile Visibility</h4>
+                                        <p className="text-sm text-gray-600">Who can see your profile</p>
                                     </div>
                                     <select
                                         value={userData.settings.visibility}
-                                        className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                                        className="px-4 py-2 border rounded-lg"
                                         disabled={!isEditing}
                                     >
-                                        <option value="Public">Public (Visible to all employers)</option>
-                                        <option value="Private">Private (Visible only when you apply)</option>
-                                        <option value="Hidden">Hidden (Not searchable)</option>
+                                        <option value="Public">Public</option>
+                                        <option value="Private">Private</option>
+                                        <option value="Hidden">Hidden</option>
                                     </select>
                                 </div>
-
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <h4 className="font-medium text-gray-900">Hide Current Employer</h4>
-                                        <p className="text-sm text-gray-600">Prevent current employer from seeing your profile</p>
-                                    </div>
-                                    <label className="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" className="sr-only peer" />
-                                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Job Alerts</h3>
-                            <div className="space-y-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Frequency</label>
-                                    <select
-                                        value={userData.settings.jobAlerts.frequency}
-                                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                                        disabled={!isEditing}
-                                    >
-                                        <option value="Real-time">Real-time</option>
-                                        <option value="Daily Digest">Daily Digest</option>
-                                        <option value="Weekly Digest">Weekly Digest</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Channels</label>
-                                    <div className="space-y-2">
-                                        {['Email', 'SMS', 'Push Notification', 'In-app notification'].map((channel) => (
-                                            <label key={channel} className="flex items-center gap-3">
-                                                <input
-                                                    type="checkbox"
-                                                    checked={userData.settings.jobAlerts.channels.includes(channel)}
-                                                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                                    disabled={!isEditing}
-                                                />
-                                                <span className="text-gray-700">{channel}</span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-white border rounded-xl p-6 shadow-sm">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Data Sharing Preferences</h3>
-                            <div className="space-y-3">
-                                {Object.entries(userData.settings.dataSharing).map(([key, value]) => (
-                                    <div key={key} className="flex items-center justify-between">
-                                        <span className="text-gray-700 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
-                                        <label className="relative inline-flex items-center cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                checked={value}
-                                                className="sr-only peer"
-                                                disabled={!isEditing}
-                                            />
-                                            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                        </label>
-                                    </div>
-                                ))}
                             </div>
                         </div>
                     </div>
@@ -1114,7 +1976,6 @@ const JobSeekerProfile = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 md:p-6">
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900">Job Seeker Profile</h1>
                     <p className="text-gray-600 mt-2">Complete your profile to get better job matches</p>
@@ -1154,10 +2015,6 @@ const JobSeekerProfile = () => {
                                     <Mail size={16} />
                                     <span>{userData.personalInfo.primaryEmail}</span>
                                 </div>
-                                <div className="flex items-center justify-center gap-2 mt-1 text-gray-600">
-                                    <Phone size={16} />
-                                    <span>{userData.personalInfo.mobileNumber}</span>
-                                </div>
                             </div>
 
                             {/* Profile Completeness */}
@@ -1189,29 +2046,6 @@ const JobSeekerProfile = () => {
                                 ))}
                             </nav>
                         </div>
-
-                        {/* Quick Stats */}
-                        <div className="bg-white rounded-2xl shadow-lg p-6">
-                            <h3 className="font-semibold text-gray-800 mb-4">Quick Stats</h3>
-                            <div className="space-y-3">
-                                <div className="flex justify-between">
-                                    <span className="text-gray-600">Experience</span>
-                                    <span className="font-semibold">7 years</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span className="text-gray-600">Applications</span>
-                                    <span className="font-semibold">12</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span className="text-gray-600">Interviews</span>
-                                    <span className="font-semibold">5</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span className="text-gray-600">Profile Views</span>
-                                    <span className="font-semibold">127</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Main Content */}
@@ -1235,6 +2069,9 @@ const JobSeekerProfile = () => {
                                         {activeTab === 'portfolio' && 'Online presence and work samples'}
                                         {activeTab === 'social' && 'Social media profiles'}
                                         {activeTab === 'resume' && 'Resume/CV management'}
+                                        {activeTab === 'volunteer' && 'Volunteer experience'}
+                                        {activeTab === 'memberships' && 'Professional memberships'}
+                                        {activeTab === 'hobbies' && 'Hobbies and interests'}
                                         {activeTab === 'settings' && 'Privacy and notification settings'}
                                     </p>
                                 </div>
@@ -1275,11 +2112,6 @@ const JobSeekerProfile = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-
-                {/* Footer Note */}
-                <div className="mt-8 text-center text-gray-500 text-sm">
-                    <p>Your profile is visible to employers when you apply for jobs. Keep it updated for better matches.</p>
                 </div>
             </div>
         </div>
