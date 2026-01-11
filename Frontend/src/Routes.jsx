@@ -13,6 +13,7 @@ import JobPostingCreationManagement from "pages/job-posting-creation-management"
 import AdminModerationManagement from "pages/admin-moderation-management";
 import NotFound from "pages/NotFound";
 import ProtectedRoute from "ProtectedRoute";
+import JobSeekerProfile from "./pages/JobSeekerProfile";
 
 const Routes = () => {
   return (
@@ -31,6 +32,7 @@ const Routes = () => {
           <Route path="/company-registration-profile-setup" element={<CompanyRegistrationProfileSetup />} />
           <Route path="/job-posting-creation-management" element={<JobPostingCreationManagement />} />
           <Route path="/admin-moderation-management" element={<AdminModerationManagement />} />
+            <Route path="/user-profile" element={<JobSeekerProfile />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </RouterRoutes>
