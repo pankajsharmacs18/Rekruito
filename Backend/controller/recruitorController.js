@@ -20,6 +20,9 @@ exports.createRecruiterProfile = async (req, res) => {
       location: req.body.location,
     });
 
+     req.user.role = 'recruiter';
+    await req.user.save({ validateBeforeSave: false });
+
     res.status(201).json({
       status: "success",
       data: {
