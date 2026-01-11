@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes as RouterRoutes, Route } from "react-router-dom";
+import { Routes as RouterRoutes, Route } from "react-router-dom";
 import ScrollToTop from "components/ScrollToTop";
 import ErrorBoundary from "components/ErrorBoundary";
 import Header from "components/ui/Header";
@@ -16,7 +16,7 @@ import ProtectedRoute from "ProtectedRoute";
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    
       <ErrorBoundary>
         <ScrollToTop />
         <Header />
@@ -35,7 +35,7 @@ const Routes = () => {
           <Route path="*" element={<NotFound />} />
         </RouterRoutes>
       </ErrorBoundary>
-    </BrowserRouter>
+    
   );
 };
 
