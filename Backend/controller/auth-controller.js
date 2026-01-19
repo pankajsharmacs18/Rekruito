@@ -5,77 +5,70 @@ const { validationResult } = require("express-validator");
 const { sendEmail } = require("../utils/email");
 const crypto = require("crypto");
 const { createSendToken } = require("../utils/jwt");
+const Recruiter = require("../models/recruiter");
 
 // @desc    Register a new user
 // @route   POST /api/v1/auth/register
 // @access  Public
-register = async (req, res, next) => {
+exports.register = async (req, res, next) => {
   try {
-    console.log("I am called");
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, role } = req.body;
-    console.log(req.body);
-    // Check if user exists
+    const {
+      name,
+      email,
+      password,
+      role, // "user" | "recruiter"
+      companyName,
+      companyWebsite,
+      companySize,
+      industry,
+      location
+    } = req.body;
+
+    // 1️⃣ Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
         status: "error",
-        message: "User already exists with this email",
+        message: "User already exists with this email"
       });
     }
 
-    // creating token after registering a new user
-
-   
-    // Create user
+    // 2️⃣ Create User
     const user = await User.create({
       name,
       email,
       password,
-      role,
+      role
     });
-     const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-    // Generate verification token
-    const verificationToken = user.generateVerificationToken();
-    await user.save({ validateBeforeSave: false });
 
-    return res.status(201).json({
-      status: "success",
-      message: "User registered successfully",
-      token,
-      data: {
-        user,
-      },
-    });
-    // Send verification email
-    // const verificationUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/verify-email/${verificationToken}`;
+    // 3️⃣ If recruiter → create recruiter profile
+    let recruiterProfile = null;
+    if (role === "recruiter") {
+      if (!companyName) {
+        return res.status(400).json({
+          status: "error",
+          message: "Company name is required for recruiter"
+        });
+      }
 
-    // try {
-    //     await sendEmail({
-    //         email: user.email,
-    //         subject: 'Email Verification',
-    //         message: `Please verify your email by clicking on this link: ${verificationUrl}`
-    //     });
+      recruiterProfile = await Recruiter.create({
+        user: user._id,
+        companyName,
+        companyWebsite,
+        companySize,
+        industry,
+        location
+      });
+    }
 
-    //     createSendToken(user, 201, res);
-    // } catch (err) {
-    //     user.emailVerificationToken = undefined;
-    //     user.emailVerificationExpires = undefined;
-    //     await user.save({ validateBeforeSave: false });
+    // 4️⃣ Send JWT
+    createSendToken(user, 201, res);
 
-    //     return res.status(500).json({
-    //         status: 'error',
-    //         message: 'There was an error sending the verification email. Please try again later.'
-    //     });
-    // }
   } catch (err) {
     next(err);
   }
